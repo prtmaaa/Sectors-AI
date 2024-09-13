@@ -597,8 +597,8 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # Initialize the LLM and AgentExecutor
-llm = ChatGroq(temperature=0, model_name="llama-3.1-70b-versatile", groq_api_key=GROQ_API_KEY)
-# llama3-groq-70b-8192-tool-use-preview
+llm = ChatGroq(temperature=0, model_name="llama3-groq-70b-8192-tool-use-preview", groq_api_key=GROQ_API_KEY)
+# llama-3.1-70b-versatile
 
 agent = create_tool_calling_agent(
     llm=llm,
