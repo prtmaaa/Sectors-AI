@@ -371,7 +371,7 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     # Create a chart
     vol_chart = create_altair_chart(df, x="Symbol:N", y="Volume:Q", title=f"Most Traded Stocks from {start_date} to {end_date} by Volume", mark_type = 'bar')
 
-    if original_end_date != end_date:
+    if original_end_date != datetime.strptime(end_date, '%Y-%m-%d').date():
         message = f"The end date has been adjusted from {original_end_date} to {end_date} due to the Indonesia Stock Exchange was closed."
 
     # Return both the most traded stocks by volume data and the chart object
