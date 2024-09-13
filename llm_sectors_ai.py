@@ -334,6 +334,7 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     :param top_n: Number of top companies to retrieve. Defaults to 5, with a max of 10.
     """
 
+    message = None
     url = f"https://api.sectors.app/v1/most-traded/?start={start_date}&end={end_date}&n_stock={top_n}&sub_sector={sub_sector.replace(' ','-')}"
     end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
