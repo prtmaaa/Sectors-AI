@@ -17,12 +17,12 @@ import altair as alt
 import pandas as pd
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 # Set up API keys and headers
-SECTORS_API_KEY = os.getenv("SECTORS_API_KEY")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-SERPER_API_KEY = os.getenv("SERPER_API_KEY")
+SECTORS_API_KEY = st.secrets["SECTORS_API_KEY"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+SERPER_API_KEY = st.secrets["SERPER_API_KEY"]
 
 headers = {"Authorization": SECTORS_API_KEY}
 
