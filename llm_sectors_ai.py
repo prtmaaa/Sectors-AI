@@ -337,9 +337,9 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     url = f"https://api.sectors.app/v1/most-traded/?start={start_date}&end={end_date}&n_stock={top_n}&sub_sector={sub_sector.replace(' ','-')}"
     end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
-    now = datetime.now()
+    today = datetime.today().date()
 
-    assert end_date_obj >= now, f"End date {end_date} cannot be in the future."
+    assert original_end_date <= today, f"End date {end_date} cannot be in the future."
 
     while True:
         data = fetch_data(url)
@@ -466,6 +466,9 @@ def get_daily_tx(stock: str, start_date: str, end_date: str):
     url = f"https://api.sectors.app/v1/daily/{stock}/?start={start_date}&end={end_date}"
     end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    today = datetime.today().date()
+
+    assert original_end_date <= today, f"End date {end_date} cannot be in the future."
 
     while True:
         data = fetch_data(url)
@@ -514,6 +517,9 @@ def get_idx_daily_tx(index: str, start_date: str, end_date: str):
     url = f"https://api.sectors.app/v1/index-daily/{index}/?start={start_date}&end={end_date}"
     end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    today = datetime.today().date()
+
+    assert original_end_date <= today, f"End date {end_date} cannot be in the future."
 
     while True:
         data = fetch_data(url)
