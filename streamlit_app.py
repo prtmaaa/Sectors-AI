@@ -18,7 +18,7 @@ def about_page():
     Welcome to our **[Sectors.app](https://sectors.app/) AI Assistant**! This tool is designed to provide you with detailed insights into the most traded stocks on the Indonesian Stock Exchange. 
 
     ### Features
-    - **Advanced Language Processing** Utilizes a state-of-the-art Large Language Model (LLM) to understand and respond to user queries with high accuracy and contextually relevant information.
+    - **Advanced Language Processing** Utilizes llama 3.1, a state-of-the-art Large Language Model (LLM) to understand and respond to user queries with high accuracy and contextually relevant information.
     - **Intelligent Query Handling** The LLM engine interprets a wide range of user queries, from simple questions to complex multi-step requests, ensuring comprehensive and relevant answers.
     - **Contextual Data Insights** Provides insights and explanations based on the latest data from the Indonesian Stock Exchange, processed through advanced AI algorithms to offer a deeper understanding of market trends.
     - **Filter by Parameter** Refine your results based on specific parameters such as sub-sectors or other criteria. The LLM engine is adept at managing complex filtering criteria to deliver precise and relevant results.
