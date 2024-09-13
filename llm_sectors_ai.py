@@ -203,7 +203,7 @@ def get_company_perf_since_ipo(stock: str):
         chg_90d: The price change in the last 90 days.
         chg_365d: The price change in the last 365 days.
     Always show data as percentage and their up/down connotation
-    A valid stock parameter consists of 4 letters, optionally followed by ‘.jk’, and is case-insensitive.
+    A valid stock parameter consists of 4 letters.
 
     :param stock: 4-character stock symbol.
     :return: Performance data as a JSON string.
@@ -242,7 +242,7 @@ def get_company_report(stock: str, sections: Optional[str] = None) -> str:
     Use this tool to get company report for a specified stock and sections.
     Get the available stock symbol from the get_companies_by_subsector or the get_companies_by_subindustry endpoints.
     Use comma to separate each section when retrieving data of more than one section. Do not use 'all'.
-    A valid stock parameter consists of 4 letters, optionally followed by ‘.jk’, and is case-insensitive.
+    A valid stock parameter consists of 4 letters.
 
     :param stock: 4-character stock symbol.
     :param sections: Comma-separated list of sections to retrieve.
@@ -264,7 +264,7 @@ def get_company_report(stock: str, sections: Optional[str] = None) -> str:
     url = f"https://api.sectors.app/v1/company/report/{stock}/"
 
     if sections == 'all' or sections is None:
-        url += f"?sections=overview,valuation,financials"
+        url += f"?sections=overview,valuation,financials,management,ownership"
     else:
         if sections != 'all':
             assert all(section in valid_sections for section in sections.split(',')), f"Invalid sections {sections}. Must be one of {valid_sections}"
@@ -277,7 +277,7 @@ def get_company_revenue_and_cost_segments(stock: str, financial_year: Optional[i
     """
     Detailed Reports.
     Get revenue and cost segments of a given ticker.
-    A valid stock parameter consists of 4 letters, optionally followed by ‘.jk’, and is case-insensitive.
+    A valid stock parameter consists of 4 letters.
 
     :param stock: 4-character stock symbol.
     :return: Company revenue and cost segments data as a JSON string.
@@ -445,7 +445,7 @@ def get_hist_market_cap():
 def get_daily_tx(stock: str, start_date: str, end_date: str):
     """
     Use this tool to get daily transaction data for a specific stock within a date range.
-    A valid stock parameter consists of 4 letters, optionally followed by ‘.jk’, and is case-insensitive.
+    A valid stock parameter consists of 4 letters.
 
     :param stock: 4-character stock symbol.
     :param start_date: Start date for the transaction data.
@@ -597,8 +597,8 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # Initialize the LLM and AgentExecutor
-llm = ChatGroq(temperature=0, model_name="llama3-groq-70b-8192-tool-use-preview", groq_api_key=GROQ_API_KEY)
-# llama-3.1-70b-versatile
+llm = ChatGroq(temperature=0, model_name="llama-3.1-70b-versatile", groq_api_key=GROQ_API_KEY)
+# llama3-groq-70b-8192-tool-use-preview
 
 agent = create_tool_calling_agent(
     llm=llm,
