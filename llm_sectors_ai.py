@@ -48,7 +48,7 @@ valid_sections = ["overview", "valuation", "future", "peers", "financials", "div
 
 valid_sub_sections = ["companies", "growth", "market cap", "stability", "statistics", "valuation"]
 
-valid_classification = ["dividend yield", "total dividend", "revenue", "earnings", "market cap"]
+valid_classification = ["dividend_yield", "total_dividend", "revenue", "earnings", "market_cap"]
 
 valid_class = ['top gainers', 'top losers']
 
@@ -264,7 +264,7 @@ def get_company_report(stock: str, sections: Optional[str] = None) -> str:
     url = f"https://api.sectors.app/v1/company/report/{stock}/"
 
     if sections == 'all' or sections is None:
-        url += f"?sections=overview,valuation,financials,management,ownership"
+        url += f"?sections=overview,valuation,financials"
     else:
         if sections != 'all':
             assert all(section in valid_sections for section in sections.split(',')), f"Invalid sections {sections}. Must be one of {valid_sections}"
