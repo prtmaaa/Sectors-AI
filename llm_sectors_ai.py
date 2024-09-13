@@ -208,7 +208,7 @@ def get_company_perf_since_ipo(stock: str):
     :param stock: 4-character stock symbol.
     :return: Performance data as a JSON string.
     """
-    if stock.endswith('.jk'):
+    if stock.endswith(('.jk','.JK')):
         return stock[:-3]
     if len(stock) != 4:
         raise ValueError("Stock symbol must be 4 characters, e.g 'BBRI'")
@@ -256,7 +256,7 @@ def get_company_report(stock: str, sections: Optional[str] = None) -> str:
         peers: Information about the peers of the given ticker.
     :return: Company report in JSON format as a string.
     """
-    if stock.endswith('.jk'):
+    if stock.endswith(('.jk','.JK')):
         return stock[:-3]
     if len(stock) != 4:
         raise ValueError(stock_not_valid)
@@ -282,7 +282,7 @@ def get_company_revenue_and_cost_segments(stock: str, financial_year: Optional[i
     :param stock: 4-character stock symbol.
     :return: Company revenue and cost segments data as a JSON string.
     """
-    if stock.endswith('.jk'):
+    if stock.endswith(('.jk','.JK')):
         return stock[:-3]
     if len(stock) != 4:
         raise ValueError(stock_not_valid)
@@ -452,7 +452,7 @@ def get_daily_tx(stock: str, start_date: str, end_date: str):
     :param end_date: End date for the transaction data.
     :return: Daily transaction data in JSON format as a string.
     """
-    if stock.endswith('.jk'):
+    if stock.endswith(('.jk','.JK')):
         return stock[:-3]
     if len(stock) != 4:
         raise ValueError(stock_not_valid)
