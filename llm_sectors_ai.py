@@ -339,7 +339,7 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
     now = datetime.now()
 
-    assert end_date_obj <= now, f"End date {end_date} cannot be in the future."
+    assert end_date_obj >= now, f"End date {end_date} cannot be in the future."
 
     while True:
         data = fetch_data(url)
