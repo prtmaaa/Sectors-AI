@@ -334,7 +334,7 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     :param top_n: Number of top companies to retrieve. Defaults to 5, with a max of 10.
     """
 
-    message = None
+    message = ""
     url = f"https://api.sectors.app/v1/most-traded/?start={start_date}&end={end_date}&n_stock={top_n}&sub_sector={sub_sector.replace(' ','-')}"
     end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
     original_end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
@@ -373,7 +373,7 @@ def get_most_traded_stocks_by_volume(start_date: str, end_date: str, sub_sector:
     vol_chart = create_altair_chart(df, x="Symbol:N", y="Volume:Q", title=f"Most Traded Stocks from {start_date} to {end_date} by Volume", mark_type = 'bar')
 
     if original_end_date != datetime.strptime(end_date, '%Y-%m-%d').date():
-        message = f"The end date has been adjusted from {original_end_date} to {end_date} due to the Indonesia Stock Exchange was closed."
+        message += f"The end date has been adjusted from {original_end_date} to {end_date} due to the Indonesia Stock Exchange was closed."
 
     # Return both the most traded stocks by volume data and the chart object
     return {
